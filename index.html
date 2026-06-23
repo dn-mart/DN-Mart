@@ -100,7 +100,7 @@ z-index:999;
 </head>
 
 <body>
-<div class="cart-btn" onclick="openCart()">
+<div class="cart-btn" onclick="window.location.href='cart.html'">
 🛒 Cart (<span id="cartCount">0</span>)
 </div>
 
@@ -240,10 +240,10 @@ function addToCart(name,price){
 
 cart.push({name,price});
 
+localStorage.setItem("cart",JSON.stringify(cart));
+
 document.getElementById("cartCount").innerText=
 cart.length;
-
-
 }
 
 function openCart(){
