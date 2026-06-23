@@ -280,7 +280,24 @@ function closeCart(){
 
 function placeOrder(){
 
-    let msg="Hello DN Mart,%0A%0AI want to order:%0A";
+    let name = document.getElementById("customerName").value;
+    let phone = document.getElementById("customerPhone").value;
+
+    if(name==""){
+        alert("Please enter your name");
+        return;
+    }
+
+    if(phone==""){
+        alert("Please enter mobile number");
+        return;
+    }
+
+    let msg="Hello DN Mart,%0A%0A";
+    msg += "Name: " + name + "%0A";
+    msg += "Mobile: " + phone + "%0A%0A";
+    msg += "Order Details:%0A";
+
     let total=0;
 
     cart.forEach((item,index)=>{
@@ -293,7 +310,8 @@ function placeOrder(){
         total += item.price;
     });
 
-    msg += "%0ATotal Amount: ₹"+total;
+    msg += "%0A";
+    msg += "Total Amount: ₹"+total;
 
     window.open(
     "https://wa.me/918360091400?text="+msg,
