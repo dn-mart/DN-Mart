@@ -84,11 +84,25 @@ width:150px;
 text-align:center;
 box-shadow:0 2px 10px rgba(0,0,0,.1);
 }
+.cart-btn{
+position:fixed;
+top:15px;
+right:15px;
+background:#fff;
+color:#0d47a1;
+padding:10px 15px;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+z-index:999;
+}
 </style>
 </head>
 
 <body>
-
+<div class="cart-btn" onclick="showCart()">
+🛒 Cart (<span id="cartCount">0</span>)
+</div>
 
 <header>
 <img src="BA521DC9-E32E-44A5-B3B3-19E38764C71B.png" alt="DN Mart Logo" style="width:400px; max-width:95%; height:auto; display:block; margin:-40px auto -60px auto;">
@@ -133,9 +147,9 @@ border-radius:8px;">
 <h3>Floral Kurti</h3>
 <p>₹599</p>
 
-<a href="https://wa.me/918360091400?text=Hello%20DN%20Mart,%20I%20want%20to%20order%20Floral%20Kurti%20Price%20₹599"
-class="btn">
-Order Now
+<a href="#" class="btn"
+onclick="addToCart('Floral Kurti',599)">
+Add to Cart
 </a>
 
 </div>
@@ -144,9 +158,9 @@ Order Now
 <h3>Designer Suit</h3>
 <p>₹1299</p>
 
-<a href="https://wa.me/918360091400?text=Hello%20DN%20Mart,%20I%20want%20to%20order%20Designer%20Suit%20Price%20₹1299"
-class="btn">
-Order Now
+<a href="#" class="btn"
+onclick="addToCart('Designer Suit',1299)">
+Add to Cart
 </a>
 
 </div>
@@ -155,20 +169,19 @@ Order Now
 <h3>Boys T-Shirt</h3>
 <p>₹399</p>
 
-<a href="https://wa.me/918360091400?text=Hello%20DN%20Mart,%20I%20want%20to%20order%20Boys%20T-Shirt%20Price%20₹399"
-class="btn">
-Order Now
+<a href="#" class="btn"
+onclick="addToCart('Boys T-Shirt',399)">
+Add to Cart
 </a>
-
 </div>
 
 <div class="cat">
 <h3>Girls Frock</h3>
 <p>₹799</p>
 
-<a href="https://wa.me/918360091400?text=Hello%20DN%20Mart,%20I%20want%20to%20order%20Girls%20Frock%20Price%20₹799"
-class="btn">
-Order Now
+<a href="#" class="btn"
+onclick="addToCart('Girls Frock',799)">
+Add to Cart
 </a>
 
 </div>
