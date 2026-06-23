@@ -241,12 +241,22 @@ cart.length;
 
 function addToCart(name,price){
 
-cart.push({name,price});
+    let existing = cart.find(item => item.name === name);
 
-localStorage.setItem("cart",JSON.stringify(cart));
+    if(existing){
+        existing.qty = (existing.qty || 1) + 1;
+    }else{
+        cart.push({
+            name:name,
+            price:price,
+            qty:1
+        });
+    }
 
-document.getElementById("cartCount").innerText=
-cart.length;
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    document.getElementById("cartCount").innerText =
+    cart.reduce((sum,item)=>sum+(item.qty || 1),0);
 }
 
 function openCart(){
