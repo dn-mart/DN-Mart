@@ -200,42 +200,52 @@ cart.push({name,price});
 document.getElementById("cartCount").innerText=
 cart.length;
 
-alert(name + " added to cart");
 
 }
 
 function showCart(){
 
-if(cart.length===0){
-alert("Cart is empty");
-return;
+    if(cart.length===0){
+        alert("Cart is empty");
+        return;
+    }
+
+    let cartItems = "🛒 Your Cart\n\n";
+    let total = 0;
+
+    cart.forEach((item,index)=>{
+        cartItems += (index+1) + ". "
+        + item.name
+        + " - ₹"
+        + item.price
+        + "\n";
+
+        total += item.price;
+    });
+
+    cartItems += "\n-------------------";
+    cartItems += "\nTotal Amount: ₹" + total;
+
+    if(confirm(cartItems + "\n\nPlace Order?")){
+
+        let msg="Hello DN Mart,%0A%0AI want to order:%0A";
+
+        cart.forEach((item,index)=>{
+            msg += (index+1)+". "
+            + item.name
+            + " - ₹"
+            + item.price
+            + "%0A";
+        });
+
+        msg += "%0ATotal Amount: ₹"+total;
+
+        window.open(
+            "https://wa.me/918360091400?text="+msg,
+            "_blank"
+        );
+    }
 }
-
-let msg="Hello DN Mart,%0A%0AI want to order:%0A%0A";
-
-let total=0;
-
-cart.forEach((item,index)=>{
-
-msg += (index+1)+". "
-+ item.name
-+ " - ₹"
-+ item.price
-+ "%0A";
-
-total += item.price;
-
-});
-
-msg += "%0ATotal Amount: ₹"+total;
-
-window.open(
-"https://wa.me/918360091400?text="+msg,
-"_blank"
-);
-
-}
-
 </script>
 
 </body>
