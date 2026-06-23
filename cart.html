@@ -83,12 +83,29 @@ let total = 0;
 let html = "";
 
 cart.forEach((item,index)=>{
-html += "<p>" + (index+1) + ". " +
-item.name + " - ₹" + item.price + "</p>";
+html += `
+<div style="margin:10px 0;padding:10px;border-bottom:1px solid #ddd;">
+${index+1}. ${item.name} - ₹${item.price}
+
+<button
+onclick="removeItem(${index})"
+style="
+background:red;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:5px;
+margin-left:10px;
+cursor:pointer;
+">
+❌ Remove
+</button>
+
+</div>
+`;
 
 total += item.price;
 });
-
 document.getElementById("cartItems").innerHTML = html;
 document.getElementById("cartTotal").innerHTML =
 "Total Amount: ₹" + total;
@@ -128,6 +145,17 @@ cart = [];
 setTimeout(() => {
     window.location.href = "index.html";
 }, 1500);
+}
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    location.reload();
 }
 </script>
 
