@@ -85,7 +85,7 @@ let html = "";
 cart.forEach((item,index)=>{
 html += `
 <div style="margin:10px 0;padding:10px;border-bottom:1px solid #ddd;">
-${index+1}. ${item.name} - ₹${item.price}
+${index+1}. ${item.name} (×${item.qty || 1}) - ₹${item.price * (item.qty || 1)}
 
 <button
 onclick="removeItem(${index})"
@@ -104,7 +104,7 @@ cursor:pointer;
 </div>
 `;
 
-total += item.price;
+total += item.price * (item.qty || 1);
 });
 document.getElementById("cartItems").innerHTML = html;
 document.getElementById("cartTotal").innerHTML =
