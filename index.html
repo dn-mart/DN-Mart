@@ -234,7 +234,10 @@ Close
 </div>
 <script>
 
-let cart=[];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+document.getElementById("cartCount").innerText =
+cart.length;
 
 function addToCart(name,price){
 
