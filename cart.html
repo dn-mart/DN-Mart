@@ -139,11 +139,14 @@ let msg =
 "Order Details:%0A";
 
 cart.forEach((item,index)=>{
-msg += (index+1)+". "
-+ item.name
-+ " - ₹"
-+ item.price
-+ "%0A";
+
+    msg += (index+1)+". "
+    + item.name
+    + " (×" + (item.qty || 1) + ")"
+    + " - ₹"
+    + (item.price * (item.qty || 1))
+    + "%0A";
+
 });
 
 msg += "%0ATotal Amount: ₹" + total;
