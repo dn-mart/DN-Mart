@@ -135,7 +135,23 @@ document.getElementById("customerName").value;
 
 let phone =
 document.getElementById("customerPhone").value;
+name = name.trim();
+phone = phone.trim();
 
+if(name === ""){
+    alert("Please enter your name");
+    return;
+}
+
+if(phone === ""){
+    alert("Please enter mobile number");
+    return;
+}
+
+if(phone.length !== 10){
+    alert("Please enter valid 10 digit mobile number");
+    return;
+}
 let msg =
 "Hello DN Mart,%0A%0A" +
 "Name: " + name + "%0A" +
