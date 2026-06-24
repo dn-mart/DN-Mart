@@ -137,7 +137,10 @@ let phone =
 document.getElementById("customerPhone").value;
 name = name.trim();
 phone = phone.trim();
-
+if(cart.length === 0){
+    alert("Please add at least 1 product");
+    return;
+}
 if(name === ""){
     alert("Please enter your name");
     return;
