@@ -237,8 +237,7 @@ Close
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 document.getElementById("cartCount").innerText =
-cart.length;
-
+cart.reduce((sum,item)=>sum + item.qty,0);
 function addToCart(name,price){
 
     let existing = cart.find(item => item.name === name);
