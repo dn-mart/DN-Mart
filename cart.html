@@ -87,6 +87,20 @@ html += `
 <div style="margin:10px 0;padding:10px;border-bottom:1px solid #ddd;">
 ${index+1}. ${item.name} (×${item.qty || 1}) - ₹${item.price * (item.qty || 1)}
 
+<button onclick="decreaseQty(${index})"
+style="padding:6px 12px;border:none;border-radius:5px;">
+➖
+</button>
+
+<span style="margin:0 10px;font-weight:bold;">
+${item.qty}
+</span>
+
+<button onclick="increaseQty(${index})"
+style="padding:6px 12px;border:none;border-radius:5px;">
+➕
+</button>
+
 <button
 onclick="removeItem(${index})"
 style="
@@ -146,6 +160,35 @@ setTimeout(() => {
     window.location.href = "index.html";
 }, 1500);
 }
+
+function increaseQty(index){
+
+    cart[index].qty++;
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    location.reload();
+}
+
+function decreaseQty(index){
+
+    if(cart[index].qty > 1){
+        cart[index].qty--;
+    }else{
+        cart.splice(index,1);
+    }
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    location.reload();
+}
+
 function removeItem(index){
 
     cart.splice(index,1);
